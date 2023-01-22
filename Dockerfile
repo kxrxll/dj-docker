@@ -6,4 +6,8 @@ COPY . /src
 EXPOSE 6060
 WORKDIR src
 
+RUN apt-get update \
+    && apt-get -y install libpq-dev gcc \
+    && pip install psycopg2
+
 CMD ["python3", "manage.py", "runserver"]
